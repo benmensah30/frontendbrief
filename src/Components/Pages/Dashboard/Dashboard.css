@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .dashboard {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: #f7f7f7;
+  }
+  
+
+  .sidebar {
+    width: 25%;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+  
+  .group-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+  
+  .group-item {
+    background-color: #34495e;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .group-item:hover {
+    background-color: #1abc9c;
+  }
+  
+  .create-group input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #34495e;
+  }
+  
+  .create-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-group button:hover {
+    background-color: #16a085;
+  }
+  
+
+  .chat-container {
+    flex-grow: 1;
+    background-color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .no-group-selected {
+    font-size: 20px;
+    color: #7f8c8d;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #2c3e50;
+  }
+  
+  .chat-box {
+    flex-grow: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+  }
+  
+  .message {
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .file-message {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .send-file {
+    display: flex;
+  }
+  
+  .send-file input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+  }
+  
+  .send-file button {
+    padding: 10px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .send-file button:hover {
+    background-color: #16a085;
+  }
+  
+
+  /* Groupes arrondis en cercle */
+.group-item {
+    background-color: #34495e;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 50%; /* Rend les groupes en forme de cercle */
+    cursor: pointer;
+    text-align: center;
+    width: 80px; /* Largeur fixe pour un cercle parfait */
+    height: 80px; /* Hauteur fixe pour correspondre à la largeur */
+    display: flex;
+    align-items: center; /* Centrer le texte verticalement */
+    justify-content: center; /* Centrer le texte horizontalement */
+    transition: background-color 0.3s ease;
+  }
+  
+  .group-item:hover {
+    background-color: #1abc9c;
+  }
+  
+  /* Optionnel : ajustez les icônes ou le texte à l'intérieur des cercles pour un bon rendu */
+  .group-item span {
+    font-size: 14px; /* Ajustez la taille du texte si nécessaire */
+    color: white;
+  }
+  

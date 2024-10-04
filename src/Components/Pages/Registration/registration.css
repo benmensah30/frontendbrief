@@ -1,0 +1,14 @@
+.containe{
+    background-color: black!important;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    /* height: 50%; */
+    padding:    20% 20% 0 20%;
+    margin: 0 0 -10% 0;
+}
+h3 {
+    margin: -10% 0 0 0;
+}
