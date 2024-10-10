@@ -1,0 +1,21 @@
+.group-list {
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .group-list h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .group-list div {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f4f4f4;
+  }
+  
+  .group-list button {
+    margin-top: 10px;
+  }
+  

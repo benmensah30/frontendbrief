@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Chat_View.css";
 import { useEffect } from "react";
 import axios from "axios";
+import InviteForm from "../InviteForm/InviteForm";
 
 export default function Chat_View({ selectGroup2 }) {
   const [groupName, setGroupName] = useState("");
@@ -21,7 +22,7 @@ export default function Chat_View({ selectGroup2 }) {
     }
 
     const response = await axios.post(
-      "http://127.0.0.1:8000/api/v1.0.0/groups/{groupId}/members",
+      `http://127.0.0.1:8000/api/v1.0.0/groups/${groupId}/members`,
       formData
     );
   };
@@ -34,10 +35,10 @@ export default function Chat_View({ selectGroup2 }) {
     formData.append("file", file);
     
     const response = await axios.post(
-      `http://127.0.0.1:8000/api/v1.0.0/groups_2/20`,
+      `http://127.0.0.1:8000/api/v1.0.0/groups_2/${localStorage.getItem('groupId')}`,
       formData, {
         headers: { 
-          Authorization: "Bearer " + localStorage.getItem("token"),
+          'Authorization': "Bearer " + localStorage.getItem("token"),
           "Content-Type": "multipart/form-data"
         },
       }
@@ -55,17 +56,19 @@ export default function Chat_View({ selectGroup2 }) {
   const selectGroup = (group) => {
     setCurrentGroup(group);
   };
+
+
   
   const groupeRequestFunction = async () => {
     const filesResponse = await axios.get(
-      `http://127.0.0.1:8000/api/v1.0.0/show_files/3`,
+      `http://127.0.0.1:8000/api/v1.0.0/show_files/${selectGroup2.id}`,
       {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       }
     );
     
     setFile(() => filesResponse.data.data[0]);
-    console.log(file);
+    console.log(selectGroup2.id);
   };
   
   useEffect(() => {
@@ -89,6 +92,7 @@ export default function Chat_View({ selectGroup2 }) {
   };
   return (
     <div>
+      <InviteForm />
       {file ? (
         <>
           <h2>{selectGroup2.name}</h2>
@@ -101,7 +105,7 @@ export default function Chat_View({ selectGroup2 }) {
                       Fichier envoyé: <strong>{file.file}</strong>
                     </div>
                   ) : (
-                    <div>{file.file}</div>
+                    <div><a href={`http://127.0.0.1:8000/storage/${file.file}`}>{file.file}</a></div>
                   )}
                 </div>
               ))

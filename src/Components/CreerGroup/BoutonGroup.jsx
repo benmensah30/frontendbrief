@@ -8,15 +8,22 @@ export default function BoutonGroup({ selectGroup, setSelect2Group }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/v1.0.0/show_group", {
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
-      })
-      .then(function (response) {
-        setData(response.data.data[0]);
-        console.log(response.data.data[0]);
-      });
-  }, [data]);
+    // axios
+    //   .get("http://127.0.0.1:8000/api/v1.0.0/show2", {
+    //     headers: { Authorization: `Bearer ` + localStorage.getItem("token") },
+    //   })
+    //   .then(function (response) {
+    //   });
+    showGroups();
+  }, []);
+
+  const showGroups = async (e) => {
+    const response = await axios.get(`http://127.0.0.1:8000/api/v1.0.0/show2/${localStorage.getItem('id')}`, {
+      headers: { Authorization: `Bearer ` + localStorage.getItem("token") },
+    });
+    setData(response.data.data[0]);
+    console.log(response.data.data[0]);
+  };
 
   const handleCreateGroup = async (e) => {
     e.preventDefault();
@@ -26,8 +33,6 @@ export default function BoutonGroup({ selectGroup, setSelect2Group }) {
       formData.set("description", description);
       formData.set("createdBy", created_by); // Ajoute le créateur du groupe si fourni
       try {
-       
-
         axios
           .post("http://127.0.0.1:8000/api/v1.0.0/group", formData)
           .then(function (response) {
@@ -44,10 +49,10 @@ export default function BoutonGroup({ selectGroup, setSelect2Group }) {
     }
   };
 
-    
   const onGroupClique = (group) => {
     setSelect2Group(group);
-  }
+    localStorage.setItem('groupId', group.id);
+  };
 
   return (
     <div className="sidebar">
